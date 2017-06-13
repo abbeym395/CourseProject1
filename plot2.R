@@ -1,6 +1,7 @@
 library(lubridate)
 
 plot2 <- function() {
+    png("plot2.png")
     power <- read.csv("household_power_consumption.txt", sep=";")
     power$Date <- dmy(power$Date)
     
@@ -9,4 +10,5 @@ plot2 <- function() {
     
     with(power, plot(datetime, Global_active_power, type="n", xlab="", ylab="Global Active Power (kilowatts)"))
     with(power, lines(datetime, Global_active_power))
+    dev.off()
 }
